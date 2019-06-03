@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server/index.js",
     "server": "node-env-run server --exec nodemon | pino-colada",
-    "dev": "run-p server client",
+    "dev": "run-p  client server",
     "client": "cd client && npm start",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
