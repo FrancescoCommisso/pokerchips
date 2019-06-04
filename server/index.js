@@ -74,7 +74,13 @@ app.post("/table", (req, res) => {
   // console.log(JSON.stringify(req.body));
   try {
     if (games.hasOwnProperty(games[req.body.id].id)) {
-      res.send(JSON.stringify(games[req.body.id]));
+      let g = games[req.body.id];
+      if (g.players.hasOwnProperty(req.body.player)) {
+        res.send(JSON.stringify(games[req.body.id]));
+      } else {
+        console.log("Player found.");
+        res.sendStatus(404);
+      }
     } else {
       res.sendStatus(404);
     }

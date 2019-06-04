@@ -2,34 +2,18 @@ import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 class Log extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  //   createLogs = () => {
-  //     this.props.logs.map(function(log, i) {
-  //       return (
-  //         <Row>
-  //           <Col>
-  //             <p>log</p>;
-  //           </Col>
-  //         </Row>
-  //       );
-  //     });
-  //   };
-
   render() {
-    // let logs = this.createLogs();
-
     return (
-      <Container>
+      <Container className="">
         <Row>
           <Col>
-            <h1>Logs</h1>
+            <h3 className="text-left">Logs</h3>
           </Col>
         </Row>
-        {this.props.logs.map(log => (
-          <p>{log}</p>
+        {this.props.logs.map((log, i) => (
+          <p className="text-left" key={i}>
+            {log}
+          </p>
         ))}
       </Container>
     );

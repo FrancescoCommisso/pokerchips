@@ -48,6 +48,11 @@ class CreateTable extends Component {
     }
   };
 
+  showError = () => {
+    //COMPLETE ME!
+    console.log("Fill in all the fields bud.");
+  };
+
   render() {
     return (
       <Container>
@@ -58,12 +63,23 @@ class CreateTable extends Component {
         </Row>
         <Form className="text-center">
           <input
+            className="form-control my-1"
+            onChange={this.handleNameChange}
+            placeholder="Name"
+          />
+          <input
+            className="form-control my-1"
             type="number"
             onChange={this.handleChipsChange}
             placeholder="Number of Chips"
           />
-          <input onChange={this.handleNameChange} placeholder="Name" />
-          <Button onClick={this.createGame}>Create New Table</Button>
+
+          <Button
+            className="btn-default round btn-block my-2"
+            onClick={this.createGame}
+          >
+            Create New Table
+          </Button>
         </Form>
       </Container>
     );

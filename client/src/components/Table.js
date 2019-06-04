@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Row, Container, Col, Button } from "react-bootstrap";
 import Log from "./Log";
+import Players from "./Players";
 
 class Table extends Component {
   constructor(props) {
@@ -28,7 +29,6 @@ class Table extends Component {
         body: JSON.stringify(this.state)
       }).then(res => {
         if (res.ok) {
-          console.log("response was dope");
           res.json().then(state => this.setState(state));
         } else {
           console.log("Error finding game");
@@ -50,7 +50,7 @@ class Table extends Component {
         body: JSON.stringify(this.state)
       }).then(res => {
         if (res.ok) {
-          console.log("response was dope");
+          console.log("Game was found");
           res.json().then(state => this.setState(state));
         } else {
           console.log("Error finding game");
@@ -75,7 +75,6 @@ class Table extends Component {
       body: JSON.stringify(this.state)
     }).then(res => {
       if (res.ok) {
-        console.log("response was dope");
         res.json().then(state => this.setState(state));
       } else {
         console.log("Error finding game");
@@ -85,34 +84,58 @@ class Table extends Component {
   render() {
     if (this.state.players != null) {
       return (
-        <Container className="bg-warning">
+        <Container className="">
+          <Row>
+            <Col className="text-left">
+              <p>Table-ID: {this.state.id}</p>
+            </Col>
+            <Col className="text-right">
+              <p>Playing As: {this.state.player}</p>
+            </Col>
+          </Row>
           <Row>
             <Col>
-              <h1>Table-ID: {this.state.id}</h1>
               <h2>Chips: {this.state.players[this.state.player]}</h2>
               <h2>Pot: {this.state.pot}</h2>
             </Col>
           </Row>
           <Row>
-            <Col className="bg-dark">
+            <Col className="">
               <input
+                className="form-control my-1"
                 type="number"
                 onChange={this.handleBetChange}
                 placeholder="Amount"
               />
-              <Button onClick={this.onBet}>Bet</Button>
+              <Button
+                className="btn-default round btn-block my-2"
+                onClick={this.onBet}
+              >
+                Bet
+              </Button>
             </Col>
-            <Col className="bg-info">
+            <Col className="">
               <input
+                className="form-control my-1"
                 type="number"
                 onChange={this.handleTakeChange}
                 placeholder="Amount"
               />
-              <Button onClick={this.onTake}>Take</Button>
+              <Button
+                className="btn-default round btn-block my-2"
+                onClick={this.onTake}
+              >
+                Take
+              </Button>
             </Col>
           </Row>
           <Row>
-            <Log logs={this.state.logs} />
+            <Col>
+              <Log logs={this.state.logs} />
+            </Col>
+            <Col>
+              <Players players={this.state.players} />
+            </Col>
           </Row>
         </Container>
       );

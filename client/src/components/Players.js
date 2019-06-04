@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 class Players extends Component {
   state = {};
@@ -8,9 +8,14 @@ class Players extends Component {
       <Container>
         <Row>
           <Col>
-            <h1>Players</h1>
+            <h3>Players</h3>
           </Col>
         </Row>
+        {Object.keys(this.props.players).map((player, i) => (
+          <p key={i}>
+            {player}: {this.props.players[player]}
+          </p>
+        ))}
       </Container>
     );
   }
