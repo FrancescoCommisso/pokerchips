@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Row, Container, Col, Button } from "react-bootstrap";
+import Log from "./Log";
 
 class Table extends Component {
   constructor(props) {
@@ -109,6 +110,9 @@ class Table extends Component {
               />
               <Button onClick={this.onTake}>Take</Button>
             </Col>
+          </Row>
+          <Row>
+            <Log logs={this.state.logs} />
           </Row>
         </Container>
       );
