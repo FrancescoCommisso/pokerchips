@@ -14,7 +14,7 @@ class Log extends Component {
 
         <Row>
           <Col style={{ maxHeight: "200px", overflowY: "scroll" }}>
-            {this.props.logs.map((log, i) => (
+            {this.props.logs.reverse().map((log, i) => (
               <p className="text-left" key={i}>
                 {log}
               </p>

@@ -16,7 +16,7 @@ class Players extends Component {
 
         <Row className=" ">
           {Object.keys(this.props.players).map((player, i) => (
-            <Col className=" col-xl">
+            <Col className=" ">
               <Player
                 key={i}
                 player={player}
