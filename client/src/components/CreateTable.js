@@ -72,7 +72,7 @@ class CreateTable extends Component {
 
     return (
       <Container>
-        <Row>
+        <Row className="cont">
           <Col className="title">
             <h3>Create Table</h3>
           </Col>

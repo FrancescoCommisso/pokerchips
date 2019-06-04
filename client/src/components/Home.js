@@ -16,7 +16,7 @@ class Home extends Component {
   render() {
     return (
       <Container className="">
-        <Row>
+        <Row className="cont">
           <Col>
             <h1>Poker Chips</h1>
             <h5>Play Poker Anywhere </h5>

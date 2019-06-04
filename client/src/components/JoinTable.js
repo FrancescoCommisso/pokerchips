@@ -84,8 +84,8 @@ class JoinTable extends Component {
     }
 
     return (
-      <Container className="cont">
-        <Row className="title">
+      <Container className="">
+        <Row className="cont title">
           <Col>
             <h3>Join Table</h3>
             <p>
