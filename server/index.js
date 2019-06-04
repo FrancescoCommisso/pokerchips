@@ -92,3 +92,13 @@ app.post("/table", (req, res) => {
 app.get("/express_backend", (req, res) => {
   res.send({ express: "YOUR EXPRESS BACKEND IS CONNECTED TO REACT" });
 });
+
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"), function(
+    err
+  ) {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
