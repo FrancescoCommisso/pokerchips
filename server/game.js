@@ -18,16 +18,16 @@ class Game {
 
     this.logBet = (player, bet) => {
       let log = player + " added " + bet + " to the pot.";
-      this.logs.push(log);
+      this.logs.unshift(log);
     };
     this.logJoin = (player, amount) => {
       let log = player + " joined the table with " + amount + " chips.";
-      this.logs.push(log);
+      this.logs.unshift(log);
     };
 
     this.logTake = (player, amount) => {
       let log = player + " took " + amount + " from the pot.";
-      this.logs.push(log);
+      this.logs.unshift(log);
     };
 
     this.take = (player, amount) => {

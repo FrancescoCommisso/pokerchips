@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Container className="cont" style={{ maxWidth: "700px" }}>
+        <Container className="" style={{ maxWidth: "700px" }}>
           <Row>
             <Col>
               <Switch>

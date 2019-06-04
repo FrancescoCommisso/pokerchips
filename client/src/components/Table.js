@@ -19,7 +19,10 @@ class Table extends Component {
   };
 
   onBet = () => {
-    if (this.state.players[this.state.player] >= this.state.betAmount) {
+    if (
+      this.state.players[this.state.player] >= this.state.betAmount &&
+      this.state.betAmount > 0
+    ) {
       fetch("/bet", {
         method: "POST",
         headers: {
@@ -40,7 +43,7 @@ class Table extends Component {
   };
 
   onTake = () => {
-    if (this.state.pot >= this.state.takeAmount) {
+    if (this.state.pot >= this.state.takeAmount && this.state.takeAmount > 0) {
       fetch("/take", {
         method: "POST",
         headers: {
@@ -65,27 +68,54 @@ class Table extends Component {
     this.setState({ takeAmount: Number(e.target.value) });
   };
 
+  //   componentDidMount() {
+  //     fetch("/table", {
+  //       method: "POST",
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json"
+  //       },
+  //       body: JSON.stringify(this.state)
+  //     }).then(res => {
+  //       if (res.ok) {
+  //         res.json().then(state => this.setState(state));
+  //       } else {
+  //         console.log("Error finding game");
+  //       }
+  //     });
+  //   }
+
   componentDidMount() {
-    fetch("/table", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(this.state)
-    }).then(res => {
-      if (res.ok) {
-        res.json().then(state => this.setState(state));
-      } else {
-        console.log("Error finding game");
-      }
-    });
+    this.loadData();
+    setInterval(this.loadData, 500);
   }
+
+  loadData = () => {
+    try {
+      fetch("/table", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(this.state)
+      }).then(res => {
+        if (res.ok) {
+          res.json().then(state => this.setState(state));
+        } else {
+          console.log("Error finding game");
+        }
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   render() {
     if (this.state.players != null) {
       return (
         <Container className="">
-          <Row>
+          <Row className="my-4">
             <Col className="text-left">
               <p>Table-ID: {this.state.id}</p>
             </Col>
@@ -103,6 +133,7 @@ class Table extends Component {
             <Col className="">
               <input
                 className="form-control my-1"
+                min={0}
                 type="number"
                 onChange={this.handleBetChange}
                 placeholder="Amount"
@@ -116,6 +147,7 @@ class Table extends Component {
             </Col>
             <Col className="">
               <input
+                min={0}
                 className="form-control my-1"
                 type="number"
                 onChange={this.handleTakeChange}
@@ -131,10 +163,12 @@ class Table extends Component {
           </Row>
           <Row>
             <Col>
-              <Log logs={this.state.logs} />
-            </Col>
-            <Col>
               <Players players={this.state.players} />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Log logs={this.state.logs} />
             </Col>
           </Row>
         </Container>

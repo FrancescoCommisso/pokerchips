@@ -3,7 +3,13 @@ import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import "./Main.css";
 
 class JoinTable extends Component {
-  state = { name: null, id: null, numberOfChips: null };
+  state = {
+    name: null,
+    id: null,
+    numberOfChips: null,
+    error: null,
+    notFound: null
+  };
 
   handleNameChange = e => {
     this.setState({ name: e.target.value });
@@ -40,6 +46,7 @@ class JoinTable extends Component {
               )
             );
         } else {
+          this.setState({ notFound: true });
           console.log("Error Joining Game");
         }
       });
@@ -49,15 +56,41 @@ class JoinTable extends Component {
   };
 
   showError = () => {
+    this.setState({ error: true });
     console.log("Fill in all the fields!");
   };
 
   render() {
+    let error;
+    if (this.state.error) {
+      error = (
+        <p style={{ color: "red" }} className="text-center">
+          Fill out all fields.
+        </p>
+      );
+    } else {
+      error = (
+        <p style={{ color: "red" }} className="text-center">
+          <br />
+        </p>
+      );
+    }
+    if (this.state.notFound) {
+      error = (
+        <p style={{ color: "red" }} className="text-center">
+          This Game-ID does not exist.
+        </p>
+      );
+    }
+
     return (
-      <Container>
-        <Row>
+      <Container className="">
+        <Row className="cont title">
           <Col>
-            <h1>Join Table</h1>
+            <h3>Join Table</h3>
+            <p>
+              Enter the Table-ID and a unique name to join your group's table.
+            </p>
           </Col>
         </Row>
 
@@ -91,6 +124,7 @@ class JoinTable extends Component {
             />
           </Col>
         </Row>
+        {error}
         <Row>
           <Col>
             <Button

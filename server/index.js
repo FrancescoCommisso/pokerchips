@@ -16,9 +16,14 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 var games = {};
 
 addTestGame = () => {
-  let testBody = { id: "test", name: "p1", numberOfChips: 1000 };
+  let testBody = { id: "test", name: "Player1", numberOfChips: 1000 };
   let testGame = new Game(testBody);
   testGame.addPlayer(testBody.name, testBody.numberOfChips);
+  testGame.addPlayer("Player2", 2000);
+  testGame.addPlayer("Player3", 2000);
+  testGame.addPlayer("Player4", 2000);
+  testGame.addPlayer("Player5", 2000);
+
   games[testGame.id] = testGame;
 };
 
@@ -71,7 +76,7 @@ app.get("/game", (req, res) => {
 });
 
 app.post("/table", (req, res) => {
-  // console.log(JSON.stringify(req.body));
+  console.log(JSON.stringify(req.body));
   try {
     if (games.hasOwnProperty(games[req.body.id].id)) {
       let g = games[req.body.id];
@@ -82,13 +87,25 @@ app.post("/table", (req, res) => {
         res.sendStatus(404);
       }
     } else {
+      // console.log("Table not found");
       res.sendStatus(404);
     }
   } catch (e) {
+    // console.log(e);
     res.sendStatus(404);
   }
 });
 
 app.get("/express_backend", (req, res) => {
   res.send({ express: "YOUR EXPRESS BACKEND IS CONNECTED TO REACT" });
+});
+
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"), function(
+    err
+  ) {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
 });
