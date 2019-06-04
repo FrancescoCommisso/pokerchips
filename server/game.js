@@ -23,6 +23,7 @@ class Game {
     this.logJoin = (player, amount) => {
       let log = player + " joined the table with " + amount + " chips.";
       this.logs.unshift(log);
+      //comment
     };
 
     this.logTake = (player, amount) => {
