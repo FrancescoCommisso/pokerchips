@@ -1,7 +1,20 @@
 .cont {
+  margin-top: 60px;
   max-width: "400px";
 }
 
 .b1 {
   display: block;
+}
+
+.title {
+  text-align: left;
+}
+
+.bordered {
+  border: solid 1px;
+  border-color: #ced4da;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
 }

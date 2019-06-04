@@ -16,9 +16,14 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 var games = {};
 
 addTestGame = () => {
-  let testBody = { id: "test", name: "p1", numberOfChips: 1000 };
+  let testBody = { id: "test", name: "Player1", numberOfChips: 1000 };
   let testGame = new Game(testBody);
   testGame.addPlayer(testBody.name, testBody.numberOfChips);
+  testGame.addPlayer("Player2", 2000);
+  testGame.addPlayer("Player3", 2000);
+  testGame.addPlayer("Player4", 2000);
+  testGame.addPlayer("Player5", 2000);
+
   games[testGame.id] = testGame;
 };
 

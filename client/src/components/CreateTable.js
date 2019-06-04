@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 
 class CreateTable extends Component {
-  state = { id: null, name: null, numberOfChips: null };
+  state = { id: null, name: null, numberOfChips: null, error: null };
 
   componentDidMount() {
     let id = this.generateID();
@@ -50,15 +50,46 @@ class CreateTable extends Component {
 
   showError = () => {
     //COMPLETE ME!
+    this.setState({ error: true });
     console.log("Fill in all the fields bud.");
   };
 
   render() {
+    let error;
+    if (this.state.error) {
+      error = (
+        <p style={{ color: "red" }} className="text-center">
+          Fill out all fields.
+        </p>
+      );
+    } else {
+      error = (
+        <p style={{ color: "red" }} className="text-center">
+          <br />
+        </p>
+      );
+    }
+
     return (
       <Container>
         <Row>
-          <Col>
-            <h1>Create Table</h1>
+          <Col className="title">
+            <h3>Create Table</h3>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="text-left">
+            <p>Here is your Table-ID.</p>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="">
+            <h1>{this.state.id}</h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="text-left">
+            <p>You can use this to invite others to your game.</p>
           </Col>
         </Row>
         <Form className="text-center">
@@ -73,6 +104,8 @@ class CreateTable extends Component {
             onChange={this.handleChipsChange}
             placeholder="Number of Chips"
           />
+
+          {error}
 
           <Button
             className="btn-default round btn-block my-2"
