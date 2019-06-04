@@ -5,7 +5,7 @@ class Player extends Component {
   state = { name: this.props.player, amount: this.props.amount };
   render() {
     return (
-      <Container className="">
+      <Container className="text-left">
         <Row className="">
           <Col>{this.state.name}</Col>
         </Row>

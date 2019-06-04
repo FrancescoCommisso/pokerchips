@@ -16,5 +16,6 @@
   border-color: #ced4da;
   border-radius: 4px;
   margin: 10px;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
