@@ -1,15 +1,41 @@
 class Game {
   constructor(obj) {
     this.id = obj.id;
-    this.pot = obj.pot;
+    this.pot = 0;
     this.logs = [];
-    this.players = [];
+    this.players = {};
 
     this.addPlayer = (name, amount) => {
-      this.players.push({ name, amount });
+      this.players[name] = amount;
+      this.logJoin(name, amount);
     };
-    this.bet = (player, amount) => {};
-    this.take = (player, amount) => {};
+    this.bet = (player, bet) => {
+      let newAmount = this.players[player] - bet;
+      this.pot += bet;
+      this.players[player] = newAmount;
+      this.logBet(player, bet);
+    };
+
+    this.logBet = (player, bet) => {
+      let log = player + " added " + bet + " to the pot.";
+      this.logs.push(log);
+    };
+    this.logJoin = (player, amount) => {
+      let log = player + " joined the table with " + amount + " chips.";
+      this.logs.push(log);
+    };
+
+    this.logTake = (player, amount) => {
+      let log = player + " took " + amount + " from the pot.";
+      this.logs.push(log);
+    };
+
+    this.take = (player, amount) => {
+      let newAmount = this.players[player] + amount;
+      this.pot -= amount;
+      this.players[player] = newAmount;
+      this.logTake(player, amount);
+    };
   }
 }
 

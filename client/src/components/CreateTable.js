@@ -39,7 +39,10 @@ class CreateTable extends Component {
         body: JSON.stringify(this.state)
       })
         .then(res => res.json())
-        .then(state => this.setState(state));
+        .then(state => this.setState(state))
+        .then(
+          this.props.history.push(`/table/${this.state.id}/${this.state.name}`)
+        );
     } else {
       this.showError();
     }
