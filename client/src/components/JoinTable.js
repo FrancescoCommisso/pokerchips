@@ -84,10 +84,13 @@ class JoinTable extends Component {
     }
 
     return (
-      <Container>
-        <Row>
+      <Container className="cont">
+        <Row className="title">
           <Col>
-            <h1>Join Table</h1>
+            <h3>Join Table</h3>
+            <p>
+              Enter the Table-ID and a unique name to join your group's table.
+            </p>
           </Col>
         </Row>
 
