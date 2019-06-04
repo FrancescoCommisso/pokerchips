@@ -88,7 +88,7 @@ class Table extends Component {
     if (this.state.players != null) {
       return (
         <Container className="">
-          <Row>
+          <Row className="my-4">
             <Col className="text-left">
               <p>Table-ID: {this.state.id}</p>
             </Col>
