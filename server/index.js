@@ -76,7 +76,7 @@ app.get("/game", (req, res) => {
 });
 
 app.post("/table", (req, res) => {
-  // console.log(JSON.stringify(req.body));
+  console.log(JSON.stringify(req.body));
   try {
     if (games.hasOwnProperty(games[req.body.id].id)) {
       let g = games[req.body.id];
@@ -87,9 +87,11 @@ app.post("/table", (req, res) => {
         res.sendStatus(404);
       }
     } else {
+      // console.log("Table not found");
       res.sendStatus(404);
     }
   } catch (e) {
+    // console.log(e);
     res.sendStatus(404);
   }
 });

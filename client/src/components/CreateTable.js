@@ -89,7 +89,7 @@ class CreateTable extends Component {
         </Row>
         <Row>
           <Col className="text-left">
-            <p>You can use this to invite others to your game.</p>
+            <p>Your friends will need this code to join the table.</p>
           </Col>
         </Row>
         <Form className="text-center">

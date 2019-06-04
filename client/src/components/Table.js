@@ -68,22 +68,49 @@ class Table extends Component {
     this.setState({ takeAmount: Number(e.target.value) });
   };
 
+  //   componentDidMount() {
+  //     fetch("/table", {
+  //       method: "POST",
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json"
+  //       },
+  //       body: JSON.stringify(this.state)
+  //     }).then(res => {
+  //       if (res.ok) {
+  //         res.json().then(state => this.setState(state));
+  //       } else {
+  //         console.log("Error finding game");
+  //       }
+  //     });
+  //   }
+
   componentDidMount() {
-    fetch("/table", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(this.state)
-    }).then(res => {
-      if (res.ok) {
-        res.json().then(state => this.setState(state));
-      } else {
-        console.log("Error finding game");
-      }
-    });
+    this.loadData();
+    setInterval(this.loadData, 500);
   }
+
+  loadData = () => {
+    try {
+      fetch("/table", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(this.state)
+      }).then(res => {
+        if (res.ok) {
+          res.json().then(state => this.setState(state));
+        } else {
+          console.log("Error finding game");
+        }
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   render() {
     if (this.state.players != null) {
       return (
