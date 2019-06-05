@@ -21,7 +21,7 @@ class Home extends Component {
       <Container className="">
         <Row className="cont">
           <Col>
-            <h1> Virtual Casino Chips</h1>
+            <h1> Virtual Chips</h1>
             <h5>Use Your Phone as a Poker Set </h5>
             <p>(Cards not included)</p>
           </Col>

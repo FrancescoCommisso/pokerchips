@@ -3,6 +3,8 @@ import { Row, Container, Col, Button } from "react-bootstrap";
 import Log from "./Log";
 import Players from "./Players";
 import NotFound from "./NotFound";
+import Dash from "./Dash";
+import Pot from "./Pot";
 
 class Table extends Component {
   constructor(props) {
@@ -70,23 +72,6 @@ class Table extends Component {
     this.setState({ takeAmount: Number(e.target.value) });
   };
 
-  //   componentDidMount() {
-  //     fetch("/table", {
-  //       method: "POST",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json"
-  //       },
-  //       body: JSON.stringify(this.state)
-  //     }).then(res => {
-  //       if (res.ok) {
-  //         res.json().then(state => this.setState(state));
-  //       } else {
-  //         console.log("Error finding game");
-  //       }
-  //     });
-  //   }
-
   componentDidMount() {
     this.loadData();
     setInterval(this.loadData, 500);
@@ -129,10 +114,16 @@ class Table extends Component {
               <p>Playing As: {this.state.player}</p>
             </Col>
           </Row>
+
           <Row>
             <Col>
-              <h2>Chips: {this.state.players[this.state.player]}</h2>
-              <h2>Pot: {this.state.pot}</h2>
+              <Pot pot={this.state.pot} players={this.state.players} />
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <Dash amount={this.state.players[this.state.player]} />
             </Col>
           </Row>
           <Row>
