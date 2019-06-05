@@ -106,6 +106,7 @@ class Table extends Component {
   };
 
   render() {
+    //comment
     if (this.state.players != null) {
       return (
         <Container className="">
