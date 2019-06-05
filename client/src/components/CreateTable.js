@@ -108,6 +108,11 @@ class CreateTable extends Component {
           {error}
 
           <Button
+            style={{
+              backgroundColor: "#ffffff",
+              borderColor: "#000000",
+              color: "#000000"
+            }}
             className="btn-default round btn-block my-2"
             onClick={this.createGame}
           >

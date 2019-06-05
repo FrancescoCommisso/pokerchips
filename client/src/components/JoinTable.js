@@ -128,6 +128,11 @@ class JoinTable extends Component {
         <Row>
           <Col>
             <Button
+              style={{
+                backgroundColor: "#000000",
+                borderColor: "#000000",
+                color: "#ffffff"
+              }}
               className="btn-default round btn-block my-2"
               onClick={this.joinTable}
             >

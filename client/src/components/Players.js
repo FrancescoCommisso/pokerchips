@@ -10,7 +10,7 @@ class Players extends Component {
       <Container className="bordered">
         <Row>
           <Col>
-            <h3 className="title">Players</h3>
+            <h4 className="title">Standings</h4>
           </Col>
         </Row>
 

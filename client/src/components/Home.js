@@ -26,7 +26,7 @@ class Home extends Component {
             <p>(Cards not included)</p>
           </Col>
         </Row>
-        <Row className="my-3">
+        <Row className="my-5">
           <Col className="text-center">
             <img
               src={landingIcon}
@@ -39,7 +39,12 @@ class Home extends Component {
           <Col>
             <Button
               onClick={this.onCreate}
-              className="btn-default round btn-block my-2"
+              className="btn-default round btn-block my-2 button1"
+              style={{
+                backgroundColor: "#ffffff",
+                borderColor: "#000000",
+                color: "#000000"
+              }}
             >
               Create New Table
             </Button>
@@ -48,6 +53,11 @@ class Home extends Component {
         <Row>
           <Col>
             <Button
+              style={{
+                backgroundColor: "#000000",
+                borderColor: "#000000",
+                color: "#ffffff"
+              }}
               onClick={this.onJoin}
               className="btn-default round btn-block my-2"
             >

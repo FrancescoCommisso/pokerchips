@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { Row, Container, Col, Button } from "react-bootstrap";
 import Log from "./Log";
 import Players from "./Players";
+import NotFound from "./NotFound";
 
 class Table extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      notFound: null,
       player: this.props.match.params.name,
       id: this.props.match.params.id,
       betAmount: 0,
@@ -101,9 +103,13 @@ class Table extends Component {
         body: JSON.stringify(this.state)
       }).then(res => {
         if (res.ok) {
-          res.json().then(state => this.setState(state));
+          res
+            .json()
+            .then(state => this.setState(state))
+            .then(this.setState({ notFound: null }));
         } else {
           console.log("Error finding game");
+          this.setState({ notFound: true });
         }
       });
     } catch (e) {
@@ -139,6 +145,11 @@ class Table extends Component {
                 placeholder="Amount"
               />
               <Button
+                style={{
+                  backgroundColor: "#ffffff",
+                  borderColor: "#000000",
+                  color: "#000000"
+                }}
                 className="btn-default round btn-block my-2"
                 onClick={this.onBet}
               >
@@ -154,6 +165,11 @@ class Table extends Component {
                 placeholder="Amount"
               />
               <Button
+                style={{
+                  backgroundColor: "#ffffff",
+                  borderColor: "#000000",
+                  color: "#000000"
+                }}
                 className="btn-default round btn-block my-2"
                 onClick={this.onTake}
               >
@@ -173,8 +189,11 @@ class Table extends Component {
           </Row>
         </Container>
       );
+    } else if (this.state.notFound === true) {
+      return <NotFound />;
+    } else {
+      return <div>Fetching</div>;
     }
-    return <div>Fetching</div>;
   }
 }
 

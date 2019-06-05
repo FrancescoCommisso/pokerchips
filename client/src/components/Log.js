@@ -8,12 +8,15 @@ class Log extends Component {
       <Container className="bordered">
         <Row>
           <Col>
-            <h3 className="title">Table Log</h3>
+            <h4 className="title">Table Log</h4>
           </Col>
         </Row>
 
         <Row>
-          <Col style={{ maxHeight: "200px", overflowY: "scroll" }}>
+          <Col
+            className="my-2"
+            style={{ maxHeight: "200px", overflowY: "scroll" }}
+          >
             {this.props.logs.map((log, i) => (
               <p className="text-left" key={i}>
                 {log}

@@ -15,8 +15,42 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 var games = {};
 
-addTestGame = () => {
-  let testBody = { id: "test", name: "Player1", numberOfChips: 1000 };
+addTestGame1 = () => {
+  let testBody = { id: "test1", name: "Player1", numberOfChips: 1000 };
+  let testGame = new Game(testBody);
+  testGame.addPlayer(testBody.name, testBody.numberOfChips);
+
+  games[testGame.id] = testGame;
+};
+addTestGame2 = () => {
+  let testBody = { id: "test2", name: "Player1", numberOfChips: 1000 };
+  let testGame = new Game(testBody);
+  testGame.addPlayer(testBody.name, testBody.numberOfChips);
+  testGame.addPlayer("Player2", 2000);
+
+  games[testGame.id] = testGame;
+};
+addTestGame3 = () => {
+  let testBody = { id: "test3", name: "Player1", numberOfChips: 1000 };
+  let testGame = new Game(testBody);
+  testGame.addPlayer(testBody.name, testBody.numberOfChips);
+  testGame.addPlayer("Player2", 2000);
+  testGame.addPlayer("Player3", 2000);
+
+  games[testGame.id] = testGame;
+};
+addTestGame4 = () => {
+  let testBody = { id: "test4", name: "Player1", numberOfChips: 1000 };
+  let testGame = new Game(testBody);
+  testGame.addPlayer(testBody.name, testBody.numberOfChips);
+  testGame.addPlayer("Player2", 2000);
+  testGame.addPlayer("Player3", 2000);
+  testGame.addPlayer("Player4", 2000);
+
+  games[testGame.id] = testGame;
+};
+addTestGame5 = () => {
+  let testBody = { id: "test5", name: "Player1", numberOfChips: 1000 };
   let testGame = new Game(testBody);
   testGame.addPlayer(testBody.name, testBody.numberOfChips);
   testGame.addPlayer("Player2", 2000);
@@ -27,7 +61,11 @@ addTestGame = () => {
   games[testGame.id] = testGame;
 };
 
-addTestGame();
+addTestGame1();
+addTestGame2();
+addTestGame3();
+addTestGame4();
+addTestGame5();
 
 app.get("/games", (req, res) => {
   res.send(games);
