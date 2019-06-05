@@ -10,12 +10,12 @@ class Pot extends Component {
         <Row>
           <Col className=" ">
             <h4 className="my-1 border-bottom text-left">Pot</h4>
-            <h2>{this.props.pot}</h2>
+            <h2>{this.props.pot.total}</h2>
           </Col>
         </Row>
         <Row>
           <Col>
-            <PotTotals players={this.props.players} />
+            <PotTotals players={this.props.pot.bets} />
           </Col>
         </Row>
       </Container>

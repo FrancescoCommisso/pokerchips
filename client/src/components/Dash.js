@@ -8,7 +8,7 @@ class Dash extends Component {
       <Container>
         <Row>
           <Col className="border border-bottom rounded">
-            <h4 className="my-1 border-bottom text-left">Your Chips</h4>
+            <h4 className="my-1 border-bottom ">Your Chips</h4>
             <h2>{this.props.amount}</h2>
           </Col>
         </Row>

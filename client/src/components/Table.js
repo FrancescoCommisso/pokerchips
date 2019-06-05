@@ -47,7 +47,10 @@ class Table extends Component {
   };
 
   onTake = () => {
-    if (this.state.pot >= this.state.takeAmount && this.state.takeAmount > 0) {
+    if (
+      this.state.pot.total >= this.state.takeAmount &&
+      this.state.takeAmount > 0
+    ) {
       fetch("/take", {
         method: "POST",
         headers: {
@@ -106,30 +109,29 @@ class Table extends Component {
     if (this.state.players != null) {
       return (
         <Container className="">
-          <Row className="my-4">
+          <Row className="my-3">
             <Col className="text-left">
-              <p>Table-ID: {this.state.id}</p>
+              <h4 className="">{this.state.id}</h4>
             </Col>
             <Col className="text-right">
-              <p>Playing As: {this.state.player}</p>
+              <h4 className="">{this.state.player}</h4>
             </Col>
           </Row>
-
-          <Row>
-            <Col>
-              <Pot pot={this.state.pot} players={this.state.players} />
-            </Col>
-          </Row>
-
-          <Row>
+          <Row className="my-1">
             <Col>
               <Dash amount={this.state.players[this.state.player]} />
             </Col>
           </Row>
-          <Row>
+
+          <Row className="my-1">
+            <Col>
+              <Pot pot={this.state.pot} />
+            </Col>
+          </Row>
+          <Row className="my-1">
             <Col className="">
               <input
-                className="form-control my-1"
+                className="form-control"
                 min={0}
                 type="number"
                 onChange={this.handleBetChange}
