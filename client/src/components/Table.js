@@ -5,6 +5,8 @@ import Players from "./Players";
 import NotFound from "./NotFound";
 import Dash from "./Dash";
 import Pot from "./Pot";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 
 class Table extends Component {
   constructor(props) {
@@ -19,7 +21,7 @@ class Table extends Component {
   }
 
   handleBetChange = e => {
-    this.setState({ betAmount: Number(e.target.value) });
+    this.setState({ betAmount: Number(e) });
   };
 
   onBet = () => {
@@ -72,7 +74,7 @@ class Table extends Component {
   };
 
   handleTakeChange = e => {
-    this.setState({ takeAmount: Number(e.target.value) });
+    this.setState({ takeAmount: Number(e) });
   };
 
   componentDidMount() {
@@ -110,7 +112,7 @@ class Table extends Component {
       return (
         <Container className="">
           <Row className="my-3">
-            <Col className="text-left">
+            <Col className=" col-1 text-left">
               <h4 className="">{this.state.id}</h4>
             </Col>
             <Col className="text-right">
@@ -128,15 +130,15 @@ class Table extends Component {
               <Pot pot={this.state.pot} />
             </Col>
           </Row>
-          <Row className="my-1">
-            <Col className="">
-              <input
-                className="form-control"
+          <Row>
+            <Col>
+              <Slider
+                className="my-3"
                 min={0}
-                type="number"
+                max={this.state.players[this.state.player]}
                 onChange={this.handleBetChange}
-                placeholder="Amount"
               />
+
               <Button
                 style={{
                   backgroundColor: "#ffffff",
@@ -146,17 +148,18 @@ class Table extends Component {
                 className="btn-default round btn-block my-2"
                 onClick={this.onBet}
               >
-                Bet
+                Bet {this.state.betAmount}
               </Button>
             </Col>
             <Col className="">
-              <input
+              <Slider
+                railStyle={{ backroundColor: "#000000" }}
+                className="my-3"
                 min={0}
-                className="form-control my-1"
-                type="number"
+                max={this.state.pot.total}
                 onChange={this.handleTakeChange}
-                placeholder="Amount"
               />
+
               <Button
                 style={{
                   backgroundColor: "#ffffff",
@@ -166,7 +169,7 @@ class Table extends Component {
                 className="btn-default round btn-block my-2"
                 onClick={this.onTake}
               >
-                Take
+                Take {this.state.takeAmount}
               </Button>
             </Col>
           </Row>
@@ -185,7 +188,7 @@ class Table extends Component {
     } else if (this.state.notFound === true) {
       return <NotFound />;
     } else {
-      return <div>Fetching</div>;
+      return <h1>Fetching</h1>;
     }
   }
 }

@@ -1,7 +1,7 @@
 class Game {
   constructor(obj) {
     this.id = obj.id;
-    this.pot = 0;
+    this.pot = { total: 0, bets: {} };
     this.logs = [];
     this.players = {};
 
@@ -11,7 +11,12 @@ class Game {
     };
     this.bet = (player, bet) => {
       let newAmount = this.players[player] - bet;
-      this.pot += bet;
+      this.pot.total += bet;
+      if (this.pot.bets.hasOwnProperty(player)) {
+        this.pot.bets[player] += bet;
+      } else {
+        this.pot.bets[player] = bet;
+      }
       this.players[player] = newAmount;
       this.logBet(player, bet);
     };
@@ -26,6 +31,10 @@ class Game {
       //comment
     };
 
+    this.resetPot = () => {
+      this.pot.bets = {};
+    };
+
     this.logTake = (player, amount) => {
       let log = player + " took " + amount + " from the pot.";
       this.logs.unshift(log);
@@ -33,9 +42,12 @@ class Game {
 
     this.take = (player, amount) => {
       let newAmount = this.players[player] + amount;
-      this.pot -= amount;
+      this.pot.total -= amount;
       this.players[player] = newAmount;
       this.logTake(player, amount);
+      if (this.pot.total === 0) {
+        this.resetPot();
+      }
     };
   }
 }
