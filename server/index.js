@@ -61,11 +61,11 @@ addTestGame5 = () => {
   games[testGame.id] = testGame;
 };
 
-addTestGame1();
+// addTestGame1();
 addTestGame2();
-addTestGame3();
-addTestGame4();
-addTestGame5();
+// addTestGame3();
+// addTestGame4();
+// addTestGame5();
 
 app.get("/games", (req, res) => {
   res.send(games);
