@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import "./Main.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
+
 import Footer from "./Footer";
+
+const landingIcon = require("../assets/landingicon.svg");
 
 class Home extends Component {
   state = {};
@@ -21,6 +24,16 @@ class Home extends Component {
             <h1>Poker Chips</h1>
             <h5>Play Poker Anywhere </h5>
             <p>(Cards not included)</p>
+          </Col>
+        </Row>
+        <Row className="my-3">
+          <Col className="text-center">
+            <img
+              src={landingIcon}
+              className="img-fluid landingicon "
+              style={{ width: "700px" }}
+              alt="Responsive Image"
+            />
           </Col>
         </Row>
         <Row>

@@ -11,6 +11,15 @@
   text-align: left;
 }
 
+@media screen and (max-width: 600px) {
+  .landingicon {
+    max-width: 500px;
+  }
+  .timer {
+    font-size: 20em;
+  }
+}
+
 .bordered {
   border: solid 1px;
   border-color: #ced4da;
