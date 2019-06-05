@@ -31,7 +31,6 @@ class Home extends Component {
             <img
               src={landingIcon}
               className="img-fluid landingicon "
-              style={{ width: "700px" }}
               alt="Responsive Image"
             />
           </Col>

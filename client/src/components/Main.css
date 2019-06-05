@@ -11,6 +11,10 @@
   text-align: left;
 }
 
+.landingicon {
+  width: 700px;
+}
+
 @media screen and (max-width: 600px) {
   .landingicon {
     max-width: 500px;
